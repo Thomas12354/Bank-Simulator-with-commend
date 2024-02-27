@@ -18,7 +18,7 @@ public class DepositCommandValidator extends CommandValidator {
 		}
 		id = setId();
 
-		if (!isAccountExist()) {
+		if (!isAccountExist(id)) {
 			return false;
 		}
 
@@ -28,7 +28,7 @@ public class DepositCommandValidator extends CommandValidator {
 
 		boolean isBalanceValid = isValidDepositAmount(depositAmount);
 
-		return isIdValid && isBalanceValid && isAccountExist();
+		return isIdValid && isBalanceValid;
 
 	}
 

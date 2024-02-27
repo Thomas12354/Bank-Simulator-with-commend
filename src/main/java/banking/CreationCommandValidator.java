@@ -34,13 +34,13 @@ public class CreationCommandValidator extends CommandValidator {
 			balance = setBalance(inputArray);
 		}
 
-		if (isAccountExist()) {
+		if (isAccountExist(id)) {
 			return false;
 		}
 
 		boolean isAccountTypeValid = isAccountTypeValid();
 
-		boolean isIdValid = idStringCheck() && !isAccountExist();
+		boolean isIdValid = idStringCheck();
 
 		boolean isAprValid = isAccountTypeValid && isAprValid();
 

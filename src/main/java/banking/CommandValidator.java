@@ -74,7 +74,7 @@ public class CommandValidator {
 		return input.matches("[0-9]+");
 	}
 
-	protected boolean isAccountExist() {
+	protected boolean isAccountExist(String id) {
 		return bank.isAccountExist(id);
 	}
 

@@ -16,9 +16,9 @@ public class TransferCommandValidator extends CommandValidator {
 			return false;
 		}
 		String senderId = setSenderId();
-		String recevierId = setSenderId();
+		String recevierId = setReeciverId();
 
-		if (!isAccountExist()) {
+		if (!isAccountExist(senderId) && !isAccountExist(recevierId)) {
 			return false;
 		}
 
@@ -28,7 +28,7 @@ public class TransferCommandValidator extends CommandValidator {
 
 		boolean isBalanceValid = isValidTransferAmount(depositAmount);
 
-		return isIdValid && isBalanceValid && isAccountExist();
+		return isIdValid && isBalanceValid;
 
 	}
 
