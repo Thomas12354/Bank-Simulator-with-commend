@@ -19,19 +19,19 @@ public class CreationCommandValidator extends CommandValidator {
 	@Override
 	public boolean validate(String input) {
 
-		input_array = inputProcess(input);
+		inputArray = inputProcess(input);
 
-		if (isExtraSpace(input_array) || !isEnoughInput(input_array)) {
+		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray)) {
 			return false;
 		}
 
 		accountType = defineAccountType();
 
-		id = setId();
+		senderId = setId();
 		apr = setApr();
 
-		if (isCdAccount() && isNumberString(input_array[4])) {
-			balance = setBalance(input_array);
+		if (isCdAccount() && isNumberString(inputArray[4])) {
+			balance = setBalance(inputArray);
 		}
 
 		if (isAccountExist()) {
@@ -49,15 +49,15 @@ public class CreationCommandValidator extends CommandValidator {
 	}
 
 	private String defineAccountType() {
-		return input_array[1];
+		return inputArray[1];
 	}
 
 	private String setId() {
-		return input_array[2];
+		return inputArray[2];
 	}
 
 	private double setApr() {
-		return Double.parseDouble(input_array[3]);
+		return Double.parseDouble(inputArray[3]);
 	}
 
 	private double setBalance(String[] input_array) {

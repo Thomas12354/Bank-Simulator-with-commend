@@ -108,4 +108,13 @@ public class AccountTest {
 
 	}
 
+	@Test
+	void account_has_correct_balance_after_withdraw_all_balance() {
+		checkingAccount.deposit(DEPOSIT_AMOUNT);
+
+		checkingAccount.withdraw(DEPOSIT_AMOUNT);
+
+		assertEquals(0, checkingAccount.getBalance());
+
+	}
 }

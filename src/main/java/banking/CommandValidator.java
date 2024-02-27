@@ -2,9 +2,9 @@ package banking;
 
 public class CommandValidator {
 	protected String command;
-	protected String id = "";
+	protected String senderId = "";
 	protected Bank bank;
-	protected String[] input_array;
+	protected String[] inputArray;
 	CreationCommandValidator creationCommandValidator;
 	DepositCommandValidator depositCommandValidator;
 
@@ -13,7 +13,7 @@ public class CommandValidator {
 	}
 
 	public boolean validate(String input) {
-		input_array = inputProcess(input);
+		inputArray = inputProcess(input);
 
 		switch (command) {
 		case "create":
@@ -30,19 +30,19 @@ public class CommandValidator {
 	}
 
 	protected String[] inputProcess(String input) {
-		input_array = inputStringConvert(input);
+		inputArray = inputStringConvert(input);
 		command = setCommand();
-		return input_array;
+		return inputArray;
 	}
 
 	protected String[] inputStringConvert(String input) {
 		input = input.toLowerCase();
-		input_array = input.split("\\s");
-		return input_array;
+		inputArray = input.split("\\s");
+		return inputArray;
 	}
 
 	protected boolean idStringCheck() {
-		return idLengthCheck() && isNumberString(id);
+		return idLengthCheck() && isNumberString(senderId);
 	}
 
 	protected boolean isExtraSpace(String[] input_array) {
@@ -63,6 +63,8 @@ public class CommandValidator {
 
 		case "deposit":
 			return input_array.length == 3;
+		case "transfer":
+			return input_array.length == 4;
 		default:
 			return false;
 		}
@@ -73,15 +75,15 @@ public class CommandValidator {
 	}
 
 	protected boolean isAccountExist() {
-		return bank.isAccountExist(id);
+		return bank.isAccountExist(senderId);
 	}
 
 	private boolean idLengthCheck() {
-		return id.length() == 8;
+		return senderId.length() == 8;
 	}
 
 	private String setCommand() {
-		return input_array[0];
+		return inputArray[0];
 	}
 
 	private boolean isCd(String[] input_array, String accountType) {

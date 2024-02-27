@@ -1,8 +1,7 @@
 package banking;
 
-public class DepositCommandValidator extends CommandValidator {
-
-	public DepositCommandValidator(Bank bank) {
+public class TransferCommandValidator extends CommandValidator {
+	public TransferCommandValidator(Bank bank) {
 		super(bank);
 	}
 
@@ -16,34 +15,36 @@ public class DepositCommandValidator extends CommandValidator {
 		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray) || !isNumberString(inputArray[2])) {
 			return false;
 		}
-		senderId = setId();
+		senderId = setSenderId();
 
 		if (!isAccountExist()) {
 			return false;
 		}
 
-		depositAmount = getDepositAmount(inputArray);
+		depositAmount = getTransferAmount(inputArray);
 
 		boolean isIdValid = idStringCheck();
 
-		boolean isBalanceValid = isValidDepositAmount(depositAmount);
+		boolean isBalanceValid = isValidTransferAmount(depositAmount);
 
 		return isIdValid && isBalanceValid && isAccountExist();
 
 	}
 
-	private String setId() {
+	private String setSenderId() {
 		return inputArray[1];
 	}
 
-	private double getDepositAmount(String[] input_array) {
-		return Double.parseDouble(input_array[2]);
+	private String setReeciverId() {
+		return inputArray[2];
 	}
 
-	private boolean isValidDepositAmount(double amount) {
+	private double getTransferAmount(String[] input_array) {
+		return Double.parseDouble(input_array[3]);
+	}
 
+	private boolean isValidTransferAmount(double amount) {
 		Account account = bank.getAccount().get(senderId);
 		return account != null && account.validDepositAmount(amount);
 	}
-
 }
