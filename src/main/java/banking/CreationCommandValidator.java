@@ -27,7 +27,7 @@ public class CreationCommandValidator extends CommandValidator {
 
 		accountType = defineAccountType();
 
-		senderId = setId();
+		id = setId();
 		apr = setApr();
 
 		if (isCdAccount() && isNumberString(inputArray[4])) {

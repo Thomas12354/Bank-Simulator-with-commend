@@ -2,7 +2,7 @@ package banking;
 
 public class CommandValidator {
 	protected String command;
-	protected String senderId = "";
+	protected String id = "";
 	protected Bank bank;
 	protected String[] inputArray;
 	CreationCommandValidator creationCommandValidator;
@@ -42,7 +42,7 @@ public class CommandValidator {
 	}
 
 	protected boolean idStringCheck() {
-		return idLengthCheck() && isNumberString(senderId);
+		return idLengthCheck() && isNumberString(id);
 	}
 
 	protected boolean isExtraSpace(String[] input_array) {
@@ -75,11 +75,11 @@ public class CommandValidator {
 	}
 
 	protected boolean isAccountExist() {
-		return bank.isAccountExist(senderId);
+		return bank.isAccountExist(id);
 	}
 
 	private boolean idLengthCheck() {
-		return senderId.length() == 8;
+		return id.length() == 8;
 	}
 
 	private String setCommand() {

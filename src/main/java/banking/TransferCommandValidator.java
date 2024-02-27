@@ -12,10 +12,11 @@ public class TransferCommandValidator extends CommandValidator {
 
 		inputArray = inputProcess(input);
 
-		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray) || !isNumberString(inputArray[2])) {
+		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray) || !isNumberString(inputArray[3])) {
 			return false;
 		}
-		senderId = setSenderId();
+		String senderId = setSenderId();
+		String recevierId = setSenderId();
 
 		if (!isAccountExist()) {
 			return false;
@@ -44,7 +45,7 @@ public class TransferCommandValidator extends CommandValidator {
 	}
 
 	private boolean isValidTransferAmount(double amount) {
-		Account account = bank.getAccount().get(senderId);
+		Account account = bank.getAccount().get(id);
 		return account != null && account.validDepositAmount(amount);
 	}
 }
