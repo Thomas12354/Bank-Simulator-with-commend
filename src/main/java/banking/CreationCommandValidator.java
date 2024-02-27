@@ -1,7 +1,6 @@
 package banking;
 
 public class CreationCommandValidator extends CommandValidator {
-	private static final String VALID_CREATE_COMMAND = "create";
 	private static final double MIN_BALANCE_CD = 1000.0;
 	private static final double MAX_BALANCE_CD = 10000.0;
 	private static final String ACCOUNT_TYPE_CD = "cd";
@@ -41,12 +40,11 @@ public class CreationCommandValidator extends CommandValidator {
 
 		boolean isAccountTypeValid = isAccountTypeValid();
 
-		boolean isCommandValid = isCommandValid(VALID_CREATE_COMMAND);
 		boolean isIdValid = idStringCheck() && !isAccountExist();
 
 		boolean isAprValid = isAccountTypeValid && isAprValid();
 
-		return isCommandValid && isIdValid && isAprValid && isAccountTypeValid;
+		return isIdValid && isAprValid && isAccountTypeValid;
 
 	}
 

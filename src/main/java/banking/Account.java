@@ -5,7 +5,7 @@ public abstract class Account {
 	private final double apr;
 	private double balance;
 
-	public Account(double apr, double balance) {
+	protected Account(double apr, double balance) {
 		this.apr = apr;
 
 		this.balance = balance;

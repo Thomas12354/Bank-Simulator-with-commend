@@ -23,8 +23,7 @@ public class CommandProcessor {
 		case "deposit":
 			deposit();
 			break;
-		default:
-			return;
+
 		}
 
 	}
@@ -60,8 +59,7 @@ public class CommandProcessor {
 		case ACCOUNT_TYPE_CHECKING:
 			bank.addCheckingAccount(id, apr, balance);
 			break;
-		default:
-			return;
+
 		}
 	}
 

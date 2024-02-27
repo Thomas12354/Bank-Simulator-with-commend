@@ -27,6 +27,17 @@ public class MasterControlTest {
 		assertSingleCommand("creat checking 12345678 1.0", actual);
 	}
 
+//	
+	@Test
+	void typo_in_deposit_command_is_invalid() {
+		input.add("create checking 12345678 1.0");
+		input.add("deposit 12345678 1000");
+
+		List<String> actual = masterControl.start(input);
+
+		assertEquals(0, actual.size());
+	}
+
 	@Test
 	void two_typo_commands_both_invalid() {
 		input.add("creat checking 12345678 1.0");

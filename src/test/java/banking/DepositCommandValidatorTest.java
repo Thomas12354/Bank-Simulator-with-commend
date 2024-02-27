@@ -52,6 +52,18 @@ public class DepositCommandValidatorTest {
 	}
 
 	@Test
+	public void deposit_zero_amount_into_a_checking_account() {
+		actual = depositCommandValidator.validate("Deposit 12345679 0");
+		assertTrue(actual);
+	}
+
+	@Test
+	public void deposit_zero_amount_into_a_saving_account() {
+		actual = depositCommandValidator.validate("Deposit 12345678 0");
+		assertTrue(actual);
+	}
+
+	@Test
 	public void deposit_into_an_account_with_a_not_existing_id() {
 		actual = depositCommandValidator.validate("Deposit 11111111 500");
 		assertFalse(actual);

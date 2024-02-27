@@ -1,7 +1,6 @@
 package banking;
 
 public class DepositCommandValidator extends CommandValidator {
-	public static final String VALID_DEPOSIT_COMMAND = "deposit";
 
 	public DepositCommandValidator(Bank bank) {
 		super(bank);
@@ -25,12 +24,11 @@ public class DepositCommandValidator extends CommandValidator {
 
 		depositAmount = getDepositAmount(input_array);
 
-		boolean isCommandValid = isCommandValid(VALID_DEPOSIT_COMMAND);
 		boolean isIdValid = idStringCheck();
 
 		boolean isBalanceValid = isValidDepositAmount(depositAmount);
 
-		return isCommandValid && isIdValid && isBalanceValid && isAccountExist();
+		return isIdValid && isBalanceValid && isAccountExist();
 
 	}
 

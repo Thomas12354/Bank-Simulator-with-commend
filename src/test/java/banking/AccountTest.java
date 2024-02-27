@@ -98,4 +98,14 @@ public class AccountTest {
 		assertEquals(CD_ACCOUNT_STARTING_BALANCE - WITHDRAW_AMOUNT * 2, cdAccount.getBalance());
 	}
 
+	@Test
+	void account_has_correct_balance_after_exceed_withdraw() {
+
+		checkingAccount.deposit(DEPOSIT_AMOUNT);
+		checkingAccount.withdraw(1000);
+
+		assertEquals(0, checkingAccount.getBalance());
+
+	}
+
 }

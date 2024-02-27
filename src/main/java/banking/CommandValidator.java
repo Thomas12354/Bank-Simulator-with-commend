@@ -72,10 +72,6 @@ public class CommandValidator {
 		return input.matches("[0-9]+");
 	}
 
-	protected boolean isCommandValid(String input) {
-		return command.equals(input);
-	}
-
 	protected boolean isAccountExist() {
 		return bank.isAccountExist(id);
 	}
