@@ -13,7 +13,7 @@ public class CommandStorage {
 		invalidStorage.add(input);
 	}
 
-	public ArrayList getInvalidCommands() {
+	public ArrayList<String> getInvalidCommands() {
 		return invalidStorage;
 	}
 }
