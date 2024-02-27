@@ -1,3 +1,5 @@
+package banking;
+
 public class CreationCommandValidator extends CommandValidator {
 	private static final String VALID_CREATE_COMMAND = "create";
 	private static final double MIN_BALANCE_CD = 1000.0;

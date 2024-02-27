@@ -1,3 +1,5 @@
+package banking;
+
 public class SavingAccount extends Account {
 	public SavingAccount(double apr, double balance) {
 		super(apr, balance);

@@ -1,3 +1,5 @@
+package banking;
+
 public class DepositCommandValidator extends CommandValidator {
 	public static final String VALID_DEPOSIT_COMMAND = "deposit";
 

@@ -1,3 +1,5 @@
+package banking;
+
 public class CommandProcessor {
 	private static final String ACCOUNT_TYPE_CD = "cd";
 	private static final String ACCOUNT_TYPE_SAVINGS = "savings";

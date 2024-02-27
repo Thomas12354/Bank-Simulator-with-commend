@@ -1,3 +1,5 @@
+package banking;
+
 public class CommandValidator {
 	protected String command;
 	protected String id = "";
