@@ -57,6 +57,18 @@ public class CreationCommandValidatorTest {
 	}
 
 	@Test
+	public void create_cd_account_with_minimum_balance() {
+		actual = creationCommandValidator.validate("Create cd 12345678 1.5 1000");
+		assertTrue(actual);
+	}
+
+	@Test
+	public void create_an_account_with_max_apr() {
+		actual = creationCommandValidator.validate("Create checking 12345678 10");
+		assertTrue(actual);
+	}
+
+	@Test
 	public void create_an_account_with_duplicate_id() {
 		bank.addSavingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
 		actual = creationCommandValidator.validate("Create checking 99999999 0.6");

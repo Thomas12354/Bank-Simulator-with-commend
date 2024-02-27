@@ -99,10 +99,10 @@ public class AccountTest {
 	}
 
 	@Test
-	void account_has_correct_balance_after_exceed_withdraw() {
+	void account_has_correct_balance_after_withdraw_the_amount_of_balance() {
 
 		checkingAccount.deposit(DEPOSIT_AMOUNT);
-		checkingAccount.withdraw(1000);
+		checkingAccount.withdraw(DEPOSIT_AMOUNT);
 
 		assertEquals(0, checkingAccount.getBalance());
 

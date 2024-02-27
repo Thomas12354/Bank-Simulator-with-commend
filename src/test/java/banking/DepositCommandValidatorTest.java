@@ -106,8 +106,20 @@ public class DepositCommandValidatorTest {
 	}
 
 	@Test
-	public void deposit_into_an_account_with_negative_value() {
-		actual = depositCommandValidator.validate("Deposit 12345678 -1000");
+	public void deposit_into_an_saving_account_with_negative_value() {
+		actual = depositCommandValidator.validate("Deposit 12345678 -100");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void deposit_into_an_checking_account_with_negative_one() {
+		actual = depositCommandValidator.validate("Deposit 12345679 -1");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void deposit_into_an_saving_account_with_negative_one() {
+		actual = depositCommandValidator.validate("Deposit 12345678 -1");
 		assertFalse(actual);
 	}
 
