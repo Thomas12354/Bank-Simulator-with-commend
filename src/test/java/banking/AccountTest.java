@@ -1,6 +1,7 @@
 package banking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -99,12 +100,11 @@ public class AccountTest {
 	}
 
 	@Test
-	void account_has_correct_balance_after_withdraw_the_amount_of_balance() {
+	void account_has_correct_valid_depositAmount() {
 
-		checkingAccount.deposit(DEPOSIT_AMOUNT);
-		checkingAccount.withdraw(DEPOSIT_AMOUNT);
-
-		assertEquals(0, checkingAccount.getBalance());
+		assertFalse(savingAccount.validDepositAmount(-1));
+		assertFalse(checkingAccount.validDepositAmount(-1));
+		assertFalse(cdAccount.validDepositAmount(-1));
 
 	}
 

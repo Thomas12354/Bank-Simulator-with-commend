@@ -34,6 +34,13 @@ public class CommandValidatorTest {
 	}
 
 	@Test
+	public void deposit_into_an_account_with_invalid_comment() {
+		bank.addSavingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
+		actual = commandValidator.validate("Deposit 98555555 500");
+		assertFalse(actual);
+	}
+
+	@Test
 	public void completely_wrong_comment() {
 		actual = commandValidator.validate("des sd 500");
 		assertFalse(actual);
