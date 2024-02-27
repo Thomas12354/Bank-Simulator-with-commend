@@ -9,4 +9,8 @@ public class CDAccount extends Account {
 		return false;
 	}
 
+	@Override
+	public String getName() {
+		return "cd";
+	}
 }

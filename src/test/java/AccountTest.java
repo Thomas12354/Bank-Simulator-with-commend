@@ -23,9 +23,9 @@ public class AccountTest {
 
 	@Test
 	void account_has_apr() {
-		assertEquals(APR, checkingAccount.getAPR());
-		assertEquals(APR, savingAccount.getAPR());
-		assertEquals(APR, cdAccount.getAPR());
+		assertEquals(APR, checkingAccount.getApr());
+		assertEquals(APR, savingAccount.getApr());
+		assertEquals(APR, cdAccount.getApr());
 	}
 
 	@Test

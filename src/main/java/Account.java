@@ -9,7 +9,7 @@ public abstract class Account {
 		this.balance = balance;
 	}
 
-	public double getAPR() {
+	public double getApr() {
 		return apr;
 	}
 
@@ -30,5 +30,7 @@ public abstract class Account {
 	}
 
 	public abstract boolean validDepositAmount(double amount);
+
+	public abstract String getName();
 
 }

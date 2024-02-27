@@ -28,4 +28,7 @@ public class Bank {
 		return accounts.containsKey(id);
 	}
 
+	public void depositById(String id, double depositAmount) {
+		accounts.get(id).deposit(depositAmount);
+	}
 }

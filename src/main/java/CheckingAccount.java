@@ -7,4 +7,10 @@ public class CheckingAccount extends Account {
 	public boolean validDepositAmount(double amount) {
 		return amount <= 1000 && amount > -1;
 	}
+
+	@Override
+	public String getName() {
+		return "checking";
+	}
+
 }

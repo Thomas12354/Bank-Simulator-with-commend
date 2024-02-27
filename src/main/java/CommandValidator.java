@@ -3,8 +3,8 @@ public class CommandValidator {
 	protected String id = "";
 	protected Bank bank;
 	protected String[] input_array;
-	DepositCommandValidator depositCommandValidator;
 	CreationCommandValidator creationCommandValidator;
+	DepositCommandValidator depositCommandValidator;
 
 	public CommandValidator(Bank bank) {
 		this.bank = bank;
@@ -66,6 +66,18 @@ public class CommandValidator {
 		}
 	}
 
+	protected boolean isNumberString(String input) {
+		return input.matches("[0-9]+");
+	}
+
+	protected boolean isCommandValid(String input) {
+		return command.equals(input);
+	}
+
+	protected boolean isAccountExist() {
+		return bank.isAccountExist(id);
+	}
+
 	private boolean idLengthCheck() {
 		return id.length() == 8;
 	}
@@ -82,15 +94,4 @@ public class CommandValidator {
 		return input_array.length == 4 && !accountType.equals("cd");
 	}
 
-	protected boolean isNumberString(String input) {
-		return input.matches("[0-9]+");
-	}
-
-	protected boolean isCommandValid(String input) {
-		return command.equals(input);
-	}
-
-	protected boolean isAccountExist() {
-		return bank.isAccountExist(id);
-	}
 }

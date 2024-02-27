@@ -28,6 +28,7 @@ public class CreationCommandValidator extends CommandValidator {
 
 		id = setId();
 		apr = setApr();
+
 		if (isCdAccount() && isNumberString(input_array[4])) {
 			balance = setBalance(input_array);
 		}
