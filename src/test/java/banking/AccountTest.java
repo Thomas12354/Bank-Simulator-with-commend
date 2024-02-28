@@ -62,7 +62,6 @@ public class AccountTest {
 		checkingAccount.withdraw(WITHDRAW_AMOUNT);
 		savingAccount.withdraw(WITHDRAW_AMOUNT);
 		cdAccount.withdraw(1200);
-
 		assertEquals(0, checkingAccount.getBalance());
 		assertEquals(0, savingAccount.getBalance());
 		assertEquals(0, cdAccount.getBalance());

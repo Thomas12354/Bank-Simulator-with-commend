@@ -2,8 +2,8 @@ package banking;
 
 public abstract class Account {
 
-	private final double apr;
-	private double balance;
+	protected final double apr;
+	protected double balance;
 
 	protected Account(double apr, double balance) {
 		this.apr = apr;
@@ -27,12 +27,26 @@ public abstract class Account {
 		}
 	}
 
+	public void deductBalance() {
+		balance -= 25;
+	}
+
 	public double getBalance() {
 		return balance;
 	}
 
 	public abstract boolean validDepositAmount(double amount);
 
+	public abstract boolean validWithdrawAmount(double amount);
+
 	public abstract String getName();
 
+	public void calculateApr() {
+		double aprPercentage = apr / 100;
+		aprPercentage /= 12;
+		double interest = balance * aprPercentage;
+		balance += interest;
+	}
+
+	public abstract void setPassed();
 }

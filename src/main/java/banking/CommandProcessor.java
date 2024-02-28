@@ -23,6 +23,9 @@ public class CommandProcessor {
 		case "deposit":
 			deposit();
 			break;
+		case "pass":
+			setTime();
+			break;
 		default:
 			break;
 		}
@@ -39,6 +42,16 @@ public class CommandProcessor {
 		id = setId(1);
 		double depositAmount = getDepositAmount();
 		bank.depositById(id, depositAmount);
+	}
+
+	private void setTime() {
+		int time = convertTime();
+		bank.setTime(time);
+
+	}
+
+	private int convertTime() {
+		return Integer.parseInt(input_array[1]);
 	}
 
 	private void account_creation() {

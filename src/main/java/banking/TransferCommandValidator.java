@@ -8,7 +8,7 @@ public class TransferCommandValidator extends CommandValidator {
 	@Override
 	public boolean validate(String input) {
 
-		double depositAmount;
+		double transferAmount;
 
 		inputArray = inputProcess(input);
 
@@ -22,11 +22,11 @@ public class TransferCommandValidator extends CommandValidator {
 			return false;
 		}
 
-		depositAmount = getTransferAmount(inputArray);
+		transferAmount = getTransferAmount(inputArray);
 
 		boolean isIdValid = idStringCheck();
 
-		boolean isBalanceValid = isValidTransferAmount(depositAmount);
+		boolean isBalanceValid = isValidTransferAmount(transferAmount);
 
 		return isIdValid && isBalanceValid;
 

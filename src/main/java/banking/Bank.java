@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Bank {
 	private Map<String, Account> accounts;
+	private int time = 0;
 
 	Bank() {
 		accounts = new HashMap<>();
@@ -33,4 +34,48 @@ public class Bank {
 	public void depositById(String id, double depositAmount) {
 		accounts.get(id).deposit(depositAmount);
 	}
+
+	public void withdrawById(String id, double depositAmount) {
+		accounts.get(id).withdraw(depositAmount);
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+		passProcess();
+
+	}
+
+	private void passProcess() {
+		for (String id : accounts.keySet()) {
+			Account account = accounts.get(id);
+			double balance = account.getBalance();
+			account.setPassed();
+
+			checkBalance(id, account, balance);
+
+		}
+	}
+
+	private void checkBalance(String id, Account account, double balance) {
+		if (balance == 0) {
+			closeAccount(id);
+		} else if (balance < 100) {
+			deductBalance(id);
+		} else {
+			account.calculateApr();
+		}
+	}
+
+	private void deductBalance(String id) {
+		accounts.get(id).deductBalance();
+	}
+
+	private void closeAccount(String id) {
+		accounts.remove(id);
+	}
+
 }

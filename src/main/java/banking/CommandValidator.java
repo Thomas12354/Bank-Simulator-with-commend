@@ -7,6 +7,9 @@ public class CommandValidator {
 	protected String[] inputArray;
 	CreationCommandValidator creationCommandValidator;
 	DepositCommandValidator depositCommandValidator;
+	TransferCommandValidator transferCommandValidator;
+	WithdrawCommandValidator withdrawCommandValidator;
+	PassCommandValidator passCommandValidator;
 
 	public CommandValidator(Bank bank) {
 		this.bank = bank;
@@ -19,10 +22,18 @@ public class CommandValidator {
 		case "create":
 			creationCommandValidator = new CreationCommandValidator(bank);
 			return creationCommandValidator.validate(input);
-
 		case "deposit":
 			depositCommandValidator = new DepositCommandValidator(bank);
 			return depositCommandValidator.validate(input);
+		case "withdraw":
+			withdrawCommandValidator = new WithdrawCommandValidator(bank);
+			return withdrawCommandValidator.validate(input);
+		case "transfer":
+			transferCommandValidator = new TransferCommandValidator(bank);
+			return transferCommandValidator.validate(input);
+		case "pass":
+			passCommandValidator = new PassCommandValidator(bank);
+			return passCommandValidator.validate(input);
 		default:
 			return false;
 		}
@@ -63,8 +74,12 @@ public class CommandValidator {
 
 		case "deposit":
 			return input_array.length == 3;
+		case "withdraw":
+			return input_array.length == 3;
 		case "transfer":
 			return input_array.length == 4;
+		case "pass":
+			return input_array.length == 2;
 		default:
 			return false;
 		}
