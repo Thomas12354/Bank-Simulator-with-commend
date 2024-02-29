@@ -9,10 +9,11 @@ public class CommandStorageTest {
 	public static final String INVALID_INPUT = "cat checking 12345678 0.6";
 
 	CommandStorage commandStorage;
+	Bank bank;
 
 	@BeforeEach
 	public void setUp() {
-		commandStorage = new CommandStorage();
+		commandStorage = new CommandStorage(bank);
 	}
 
 	@Test

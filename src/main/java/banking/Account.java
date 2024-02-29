@@ -48,5 +48,6 @@ public abstract class Account {
 		balance += interest;
 	}
 
-	public abstract void setPassed();
+	public abstract void setPassed(int time);
+
 }

@@ -2,6 +2,9 @@ package banking;
 
 public class PassCommandValidator extends CommandValidator {
 
+	public static final int MIN_MONTH = 1;
+	public static final int MAX_MONTH = 60;
+
 	public PassCommandValidator(Bank bank) {
 		super(bank);
 	}
@@ -11,13 +14,16 @@ public class PassCommandValidator extends CommandValidator {
 		int time;
 		inputArray = inputProcess(input);
 
-		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray) || !isNumberString(inputArray[1])) {
+		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray)) {
 			return false;
 		}
 
+		if (!isNumberString(inputArray[1])) {
+			return false;
+		}
 		time = setTime();
 
-		return time >= 1 && time <= 60;
+		return time >= MIN_MONTH && time <= MAX_MONTH;
 
 	}
 

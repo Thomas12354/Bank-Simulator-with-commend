@@ -43,7 +43,7 @@ public class DepositCommandValidator extends CommandValidator {
 	private boolean isValidDepositAmount(double amount) {
 
 		Account account = bank.getAccount().get(id);
-		return account != null && account.validDepositAmount(amount);
+		return account.validDepositAmount(amount);
 	}
 
 }

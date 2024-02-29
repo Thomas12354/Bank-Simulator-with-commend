@@ -12,7 +12,8 @@ public class WithdrawCommandValidator extends CommandValidator {
 
 		inputArray = inputProcess(input);
 
-		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray) || !isNumberString(inputArray[2])) {
+		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray)
+				|| (!isNumberString(inputArray[2]) && !isDecimalNumberString(inputArray[2]))) {
 			return false;
 		}
 		id = setId();
@@ -42,6 +43,6 @@ public class WithdrawCommandValidator extends CommandValidator {
 	private boolean isValidWithdrawAmount(double amount) {
 		Account account = bank.getAccount().get(id);
 
-		return account != null && account.validWithdrawAmount(amount);
+		return account.validWithdrawAmount(amount);
 	}
 }

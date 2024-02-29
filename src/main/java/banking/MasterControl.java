@@ -14,14 +14,25 @@ public class MasterControl {
 		this.commandStorage = commandStorage;
 	}
 
+	public static String inputStringConvert(String input) {
+		input = input.toLowerCase();
+		String command;
+		command = input.split("\\s")[0];
+		return command;
+	}
+
 	public List<String> start(List<String> input) {
 		for (String command : input) {
 			if (commandValidator.validate(command)) {
 				commandProcessor.processCommand(command);
+				String commandSplit = inputStringConvert(command);
+				if (!commandSplit.equals("pass") && !commandSplit.equals("create")) {
+					commandStorage.addValidCommand(command);
+				}
 			} else {
 				commandStorage.addInvalidCommand(command);
 			}
 		}
-		return commandStorage.getInvalidCommands();
+		return commandStorage.getCommands();
 	}
 }

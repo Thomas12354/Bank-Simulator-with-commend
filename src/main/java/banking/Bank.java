@@ -1,14 +1,17 @@
 package banking;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bank {
-	private Map<String, Account> accounts;
+	private final Map<String, Account> accounts;
+	private final ArrayList<String> removeList;
 	private int time = 0;
 
 	Bank() {
 		accounts = new HashMap<>();
+		removeList = new ArrayList<>();
 	}
 
 	public Map<String, Account> getAccount() {
@@ -53,16 +56,16 @@ public class Bank {
 		for (String id : accounts.keySet()) {
 			Account account = accounts.get(id);
 			double balance = account.getBalance();
-			account.setPassed();
+			account.setPassed(time);
 
 			checkBalance(id, account, balance);
-
 		}
+		closeAccount();
 	}
 
 	private void checkBalance(String id, Account account, double balance) {
 		if (balance == 0) {
-			closeAccount(id);
+			saveCloseAccountId(id);
 		} else if (balance < 100) {
 			deductBalance(id);
 		} else {
@@ -74,8 +77,26 @@ public class Bank {
 		accounts.get(id).deductBalance();
 	}
 
-	private void closeAccount(String id) {
-		accounts.remove(id);
+	private void saveCloseAccountId(String id) {
+		removeList.add(id);
 	}
 
+	private void closeAccount() {
+		for (String id : removeList) {
+			accounts.remove(id);
+		}
+		removeList.clear();
+	}
+
+	public void transferById(String senderId, String receiverId, double transferAmount) {
+		Account sender = accounts.get(senderId);
+		Account receiver = accounts.get(receiverId);
+
+		if (transferAmount > sender.getBalance()) {
+			transferAmount = sender.getBalance();
+		}
+		sender.withdraw(transferAmount);
+		receiver.deposit(transferAmount);
+
+	}
 }

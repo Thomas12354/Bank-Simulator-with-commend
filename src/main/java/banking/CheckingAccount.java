@@ -19,11 +19,11 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public String getName() {
-		return "checking";
+		return "Checking";
 	}
 
 	@Override
-	public void setPassed() {
+	public void setPassed(int time) {
 
 	}
 

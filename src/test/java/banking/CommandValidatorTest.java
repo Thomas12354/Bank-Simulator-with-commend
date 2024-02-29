@@ -8,8 +8,11 @@ import org.junit.jupiter.api.Test;
 
 public class CommandValidatorTest {
 	public static final String ID_FIRST_ACCOUNT = "99999999";
+	public static final String ID_SECOND_ACCOUNT = "12345678";
+	public static final double DEPOSIT_AMOUNT = 200;
+
 	public static final double APR = 3;
-	public static final double CHECKING_AND_DEPOSIT_STARTING_BALANCE = 0;
+	public static final double CHECKING_AND_SAVING_STARTING_BALANCE = 0;
 	CommandValidator commandValidator;
 	boolean actual;
 	Bank bank;
@@ -28,14 +31,14 @@ public class CommandValidatorTest {
 
 	@Test
 	public void deposit_into_an_account_with_valid_comment() {
-		bank.addSavingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
+		bank.addSavingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
 		actual = commandValidator.validate("Deposit 99999999 500");
 		assertTrue(actual);
 	}
 
 	@Test
 	public void deposit_into_an_account_with_invalid_comment() {
-		bank.addSavingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
+		bank.addSavingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
 		actual = commandValidator.validate("Deposit 98555555 500");
 		assertFalse(actual);
 	}
@@ -44,6 +47,29 @@ public class CommandValidatorTest {
 	public void completely_wrong_comment() {
 		actual = commandValidator.validate("des sd 500");
 		assertFalse(actual);
+	}
+
+	@Test
+	public void withdraw_from_an_saving_account_with_valid_comment() {
+		bank.addSavingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.depositById(ID_FIRST_ACCOUNT, DEPOSIT_AMOUNT);
+		actual = commandValidator.validate("Withdraw 99999999 100");
+		assertTrue(actual);
+	}
+
+	@Test
+	public void transfer_from_an_saving_to_saving_account_with_valid_command() {
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_SECOND_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.depositById(ID_FIRST_ACCOUNT, DEPOSIT_AMOUNT);
+		actual = commandValidator.validate("Transfer 99999999 12345678 200");
+		assertTrue(actual);
+	}
+
+	@Test
+	public void pass_time_with_valid_comment() {
+		actual = commandValidator.validate("Pass 1");
+		assertTrue(actual);
 	}
 
 }

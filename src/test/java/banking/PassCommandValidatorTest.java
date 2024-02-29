@@ -52,4 +52,28 @@ public class PassCommandValidatorTest {
 		actual = passCommandValidator.validate("pass 0.5");
 		assertFalse(actual);
 	}
+
+	@Test
+	public void pass_time_with_missing_month() {
+		actual = passCommandValidator.validate("1");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void pass_time_with_invalid_month() {
+		actual = passCommandValidator.validate("pass t");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void pass_time_with_missing_pass() {
+		actual = passCommandValidator.validate("pass");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void pass_time_with_extra_argument() {
+		actual = passCommandValidator.validate("pass 1 fool");
+		assertFalse(actual);
+	}
 }

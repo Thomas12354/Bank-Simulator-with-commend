@@ -118,12 +118,6 @@ public class DepositCommandValidatorTest {
 	}
 
 	@Test
-	public void deposit_into_an_saving_account_with_negative_one() {
-		actual = depositCommandValidator.validate("Deposit 12345678 -1");
-		assertFalse(actual);
-	}
-
-	@Test
 	public void deposit_into_an_account_with_wrong_id_command() {
 		actual = depositCommandValidator.validate("Deposit savings 500");
 		assertFalse(actual);

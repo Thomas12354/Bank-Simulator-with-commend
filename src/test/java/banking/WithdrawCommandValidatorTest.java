@@ -33,9 +33,35 @@ public class WithdrawCommandValidatorTest {
 	@Test
 	public void withdraw_from_an_saving_account_with_valid_comment() {
 		bank.depositById(SAVINGS_ACCOUNT_ID, 200);
-		bank.setTime(1);
 		actual = withdrawCommandValidator.validate("Withdraw 12345678 100");
 		assertTrue(actual);
+	}
+
+	@Test
+	public void withdraw_from_an_saving_account_with_maximum_amount() {
+		bank.depositById(SAVINGS_ACCOUNT_ID, 200);
+		actual = withdrawCommandValidator.validate("Withdraw 12345678 1000");
+		assertTrue(actual);
+	}
+
+	@Test
+	public void withdraw_from_an_saving_account_with_exceed_maximum() {
+		bank.depositById(SAVINGS_ACCOUNT_ID, 200);
+		actual = withdrawCommandValidator.validate("Withdraw 12345678 2000");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void withdraw_zero_from_an_saving_account() {
+		bank.depositById(SAVINGS_ACCOUNT_ID, 200);
+		actual = withdrawCommandValidator.validate("Withdraw 12345678 0");
+		assertTrue(actual);
+	}
+
+	@Test
+	public void withdraw_from_an_saving_account_with_negative_amount() {
+		actual = withdrawCommandValidator.validate("Withdraw 12345678 -100");
+		assertFalse(actual);
 	}
 
 	@Test
@@ -49,104 +75,136 @@ public class WithdrawCommandValidatorTest {
 	}
 
 	@Test
-	public void withdraw_zero_from_an_saving_with() {
-		actual = withdrawCommandValidator.validate("Withdraw 12345678 0");
+	public void withdraw_from_an_checking_account_with_maximum_amount() {
+		bank.depositById(CHECKING_ACCOUNT_ID, 200);
+		actual = withdrawCommandValidator.validate("Withdraw 12345679 400");
 		assertTrue(actual);
 	}
 
 	@Test
-	public void deposit_into_a_checking_account_within_amount() {
-		actual = depositCommandValidator.validate("Deposit 12345679 1000");
+	public void withdraw_from_an_checking_account_with_exceed_maximum() {
+		bank.depositById(CHECKING_ACCOUNT_ID, 200);
+		actual = withdrawCommandValidator.validate("Withdraw 12345679 1000");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void withdraw_from_an_checking_account_with_zero_amount() {
+		bank.depositById(CHECKING_ACCOUNT_ID, 200);
+		actual = withdrawCommandValidator.validate("Withdraw 12345679 0");
 		assertTrue(actual);
 	}
 
 	@Test
-	public void deposit_into_a_savings_account_within_amount() {
-		actual = depositCommandValidator.validate("Deposit 12345678 2500");
+	public void withdraw_from_an_checking_account_with_negative_amount() {
+		actual = withdrawCommandValidator.validate("Withdraw 12345679 -100");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void withdraw_from_an_cd_account_with_valid_command() {
+		bank.setTime(12);
+		actual = withdrawCommandValidator.validate("Withdraw 99999999 1127.3280210399332");
 		assertTrue(actual);
 	}
 
 	@Test
-	public void deposit_zero_amount_into_a_checking_account() {
-		actual = depositCommandValidator.validate("Deposit 12345679 0");
+	public void withdraw_from_an_cd_account_with_exceed_balance() {
+		bank.setTime(12);
+
+		actual = withdrawCommandValidator.validate("Withdraw 99999999 2000");
 		assertTrue(actual);
 	}
 
 	@Test
-	public void deposit_zero_amount_into_a_saving_account() {
-		actual = depositCommandValidator.validate("Deposit 12345678 0");
-		assertTrue(actual);
-	}
+	public void withdraw_from_an_cd_account_with_zero_amount() {
+		bank.setTime(12);
 
-	@Test
-	public void deposit_into_an_account_with_a_not_existing_id() {
-		actual = depositCommandValidator.validate("Deposit 11111111 500");
+		actual = withdrawCommandValidator.validate("Withdraw 99999999 0");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_an_account_with_missing_deposit_command() {
-		actual = depositCommandValidator.validate(" 12345678 500");
+	public void withdraw_from_an_cd_account_with_negative_amount() {
+		bank.setTime(12);
+
+		actual = withdrawCommandValidator.validate("Withdraw 99999999 -100");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_an_account_with_missing_ID() {
-		actual = depositCommandValidator.validate("Deposit 3000");
+	public void withdraw_from_an_cd_account_with_below_balance() {
+		bank.setTime(12);
+
+		actual = withdrawCommandValidator.validate("Withdraw 99999999 500");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_an_account_with_missing_amount() {
-		actual = depositCommandValidator.validate("Deposit 12345678");
+	public void withdraw_from_an_cd_account_with_not_reach_12_month() {
+		bank.setTime(5);
+
+		actual = withdrawCommandValidator.validate("Withdraw 99999999 1000");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_a_checking_account_exceed_amount() {
-		actual = depositCommandValidator.validate("Deposit 12345679 3000");
+	public void withdraw_from_an_checking_account_with_invalid_id() {
+		actual = withdrawCommandValidator.validate("Withdraw 1234569 100");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_a_savings_account_exceed_amount() {
-		actual = depositCommandValidator.validate("Deposit 12345678 3000");
+	public void withdraw_from_an_checking_account_with_typo_id() {
+		actual = withdrawCommandValidator.validate("Withdraw 12345@69 100");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_a_cd() {
-		actual = depositCommandValidator.validate("Deposit 99999999 1000");
+	public void withdraw_from_an_account_with_typo_command() {
+		actual = withdrawCommandValidator.validate("Wit@draw 12345679 100");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_an_saving_account_with_negative_value() {
-		actual = depositCommandValidator.validate("Deposit 12345678 -100");
+	public void withdraw_from_an_account_with_typo_balance() {
+		actual = withdrawCommandValidator.validate("Withdraw 12345679 1@0");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_an_checking_account_with_negative_one() {
-		actual = depositCommandValidator.validate("Deposit 12345679 -1");
+	public void withdraw_from_an_account_with_missing_withdraw() {
+		actual = withdrawCommandValidator.validate(" 12345789 1@0");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_an_saving_account_with_negative_one() {
-		actual = depositCommandValidator.validate("Deposit 12345678 -1");
+	public void withdraw_from_an_account_with_missing_id() {
+		actual = withdrawCommandValidator.validate("Withdraw  100");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_an_account_with_wrong_id_command() {
-		actual = depositCommandValidator.validate("Deposit savings 500");
+	public void withdraw_from_an_account_with_missing_amount() {
+		actual = withdrawCommandValidator.validate("Withdraw 12345679");
 		assertFalse(actual);
 	}
 
 	@Test
-	public void deposit_into_an_account_with_wrong_deposit_value_command() {
-		actual = depositCommandValidator.validate("Deposit 12345678 savings");
+	public void withdraw_from_an_account_with_wrong_amount() {
+		actual = withdrawCommandValidator.validate("Withdraw 12345679 saving ");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void withdraw_from_an_account_with_wrong_id() {
+		actual = withdrawCommandValidator.validate("Withdraw saving 100");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void withdraw_with_extra_argument() {
+		actual = withdrawCommandValidator.validate("Withdraw 12345679 200 foo");
 		assertFalse(actual);
 	}
 }

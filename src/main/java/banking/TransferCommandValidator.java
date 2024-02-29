@@ -1,6 +1,9 @@
 package banking;
 
 public class TransferCommandValidator extends CommandValidator {
+	String senderId;
+	String receiverId;
+
 	public TransferCommandValidator(Bank bank) {
 		super(bank);
 	}
@@ -15,20 +18,21 @@ public class TransferCommandValidator extends CommandValidator {
 		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray) || !isNumberString(inputArray[3])) {
 			return false;
 		}
-		String senderId = setSenderId();
-		String recevierId = setReeciverId();
+		senderId = setSenderId();
+		receiverId = setReceiverId();
+		if (senderId.equals(receiverId)) {
+			return false;
+		}
 
-		if (!isAccountExist(senderId) && !isAccountExist(recevierId)) {
+		if (!isAccountExist(senderId) || !isAccountExist(receiverId)) {
 			return false;
 		}
 
 		transferAmount = getTransferAmount(inputArray);
 
-		boolean isIdValid = idStringCheck();
-
 		boolean isBalanceValid = isValidTransferAmount(transferAmount);
 
-		return isIdValid && isBalanceValid;
+		return isBalanceValid;
 
 	}
 
@@ -36,7 +40,7 @@ public class TransferCommandValidator extends CommandValidator {
 		return inputArray[1];
 	}
 
-	private String setReeciverId() {
+	private String setReceiverId() {
 		return inputArray[2];
 	}
 
@@ -45,7 +49,15 @@ public class TransferCommandValidator extends CommandValidator {
 	}
 
 	private boolean isValidTransferAmount(double amount) {
-		Account account = bank.getAccount().get(id);
-		return account != null && account.validDepositAmount(amount);
+		Account senderAccount = bank.getAccount().get(senderId);
+		Account receiverAccount = bank.getAccount().get(receiverId);
+		if (isCd(senderAccount, receiverAccount)) {
+			return false;
+		}
+		return senderAccount.validWithdrawAmount(amount) && receiverAccount.validDepositAmount(amount);
+	}
+
+	private boolean isCd(Account senderAccount, Account receiverAccount) {
+		return senderAccount.getName().equals("cd") || receiverAccount.getName().equals("cd");
 	}
 }

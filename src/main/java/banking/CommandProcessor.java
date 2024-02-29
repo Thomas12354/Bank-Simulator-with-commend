@@ -7,21 +7,27 @@ public class CommandProcessor {
 	Bank bank;
 	private String id;
 	private double balance;
-	private String[] input_array;
+	private String[] inputArray;
 
 	public CommandProcessor(Bank bank) {
 		this.bank = bank;
 	}
 
 	public void processCommand(String input) {
-		input_array = inputStringConvert(input);
-		String command = input_array[0];
+		inputArray = inputStringConvert(input);
+		String command = inputArray[0];
 		switch (command) {
 		case "create":
 			account_creation();
 			break;
 		case "deposit":
 			deposit();
+			break;
+		case "withdraw":
+			withdraw();
+			break;
+		case "transfer":
+			transfer();
 			break;
 		case "pass":
 			setTime();
@@ -32,10 +38,27 @@ public class CommandProcessor {
 
 	}
 
+	private void transfer() {
+		String senderId = setSenderId();
+		String receiverId = setReceiverId();
+		double transferAmount = getTransferAmount();
+		bank.transferById(senderId, receiverId, transferAmount);
+	}
+
+	private double getTransferAmount() {
+		return Double.parseDouble(inputArray[3]);
+	}
+
+	private void withdraw() {
+		id = setId(1);
+		double withdrawAmount = getWithdrawAmount();
+		bank.withdrawById(id, withdrawAmount);
+	}
+
 	private String[] inputStringConvert(String input) {
 		input = input.toLowerCase();
-		input_array = input.split("\\s");
-		return input_array;
+		inputArray = input.split("\\s");
+		return inputArray;
 	}
 
 	private void deposit() {
@@ -51,20 +74,20 @@ public class CommandProcessor {
 	}
 
 	private int convertTime() {
-		return Integer.parseInt(input_array[1]);
+		return Integer.parseInt(inputArray[1]);
 	}
 
 	private void account_creation() {
 		String accountType;
 		double apr;
 
-		accountType = input_array[1];
+		accountType = inputArray[1];
 		id = setId(2);
 		apr = setApr();
 
 		switch (accountType) {
 		case ACCOUNT_TYPE_CD:
-			balance = Double.parseDouble(input_array[4]);
+			balance = Double.parseDouble(inputArray[4]);
 			bank.addCDAccount(id, apr, balance);
 			break;
 		case ACCOUNT_TYPE_SAVINGS:
@@ -79,14 +102,27 @@ public class CommandProcessor {
 	}
 
 	private String setId(int x) {
-		return input_array[x];
+		return inputArray[x];
 	}
 
 	private double setApr() {
-		return Double.parseDouble(input_array[3]);
+		return Double.parseDouble(inputArray[3]);
 	}
 
 	private double getDepositAmount() {
-		return Double.parseDouble(input_array[2]);
+		return Double.parseDouble(inputArray[2]);
 	}
+
+	private double getWithdrawAmount() {
+		return Double.parseDouble(inputArray[2]);
+	}
+
+	private String setSenderId() {
+		return inputArray[1];
+	}
+
+	private String setReceiverId() {
+		return inputArray[2];
+	}
+
 }

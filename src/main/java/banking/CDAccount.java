@@ -2,15 +2,15 @@ package banking;
 
 public class CDAccount extends Account {
 
-	private double passedtime;
+	private double pastime = 0;
 
 	public CDAccount(double apr, double balance) {
 		super(apr, balance);
 	}
 
 	@Override
-	public void setPassed() {
-		passedtime++;
+	public void setPassed(int time) {
+		pastime += time;
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class CDAccount extends Account {
 	@Override
 	public boolean validWithdrawAmount(double amount) {
 		if (checkWithdrawStatus()) {
-			return balance >= amount;
+			return amount >= balance;
 		} else {
 			return false;
 		}
@@ -29,7 +29,7 @@ public class CDAccount extends Account {
 
 	@Override
 	public String getName() {
-		return "cd";
+		return "Cd";
 	}
 
 	@Override
@@ -37,13 +37,13 @@ public class CDAccount extends Account {
 		double aprPercentage = apr / 100;
 		aprPercentage /= 12;
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4 * pastime; i++) {
 			double interest = balance * aprPercentage;
 			balance += interest;
 		}
 	}
 
 	private boolean checkWithdrawStatus() {
-		return passedtime >= 12;
+		return pastime >= 12;
 	}
 }

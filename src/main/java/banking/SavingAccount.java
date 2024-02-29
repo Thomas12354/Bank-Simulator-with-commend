@@ -21,7 +21,7 @@ public class SavingAccount extends Account {
 
 	@Override
 	public String getName() {
-		return "savings";
+		return "Savings";
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class SavingAccount extends Account {
 	}
 
 	@Override
-	public void setPassed() {
+	public void setPassed(int time) {
 		isPassed = true;
 	}
 

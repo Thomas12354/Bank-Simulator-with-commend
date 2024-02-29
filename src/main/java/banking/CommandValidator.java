@@ -56,8 +56,8 @@ public class CommandValidator {
 		return idLengthCheck() && isNumberString(id);
 	}
 
-	protected boolean isExtraSpace(String[] input_array) {
-		for (String input : input_array) {
+	protected boolean isExtraSpace(String[] inputArray) {
+		for (String input : inputArray) {
 			if (input.isEmpty()) {
 				return true;
 			}
@@ -65,21 +65,21 @@ public class CommandValidator {
 		return false;
 	}
 
-	protected boolean isEnoughInput(String[] input_array) {
-		String accountType = input_array[1];
+	protected boolean isEnoughInput(String[] inputArray) {
 
 		switch (command) {
 		case "create":
-			return isSavingOrChecking(input_array, accountType) || isCd(input_array, accountType);
+			String accountType = inputArray[1];
+			return isSavingOrChecking(inputArray, accountType) || isCd(inputArray, accountType);
 
 		case "deposit":
-			return input_array.length == 3;
+			return inputArray.length == 3;
 		case "withdraw":
-			return input_array.length == 3;
+			return inputArray.length == 3;
 		case "transfer":
-			return input_array.length == 4;
+			return inputArray.length == 4;
 		case "pass":
-			return input_array.length == 2;
+			return inputArray.length == 2;
 		default:
 			return false;
 		}
@@ -87,6 +87,10 @@ public class CommandValidator {
 
 	protected boolean isNumberString(String input) {
 		return input.matches("[0-9]+");
+	}
+
+	protected boolean isDecimalNumberString(String input) {
+		return input.matches("[0-9]+(\\.[0-9]+)?");
 	}
 
 	protected boolean isAccountExist(String id) {
@@ -101,12 +105,12 @@ public class CommandValidator {
 		return inputArray[0];
 	}
 
-	private boolean isCd(String[] input_array, String accountType) {
-		return input_array.length == 5 && (accountType.equals("cd"));
+	private boolean isCd(String[] inputArray, String accountType) {
+		return inputArray.length == 5 && (accountType.equals("cd"));
 	}
 
-	private boolean isSavingOrChecking(String[] input_array, String accountType) {
-		return input_array.length == 4 && !accountType.equals("cd");
+	private boolean isSavingOrChecking(String[] inputArray, String accountType) {
+		return inputArray.length == 4 && !accountType.equals("cd");
 	}
 
 }
