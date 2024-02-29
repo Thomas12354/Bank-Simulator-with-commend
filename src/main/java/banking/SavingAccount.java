@@ -38,7 +38,7 @@ public class SavingAccount extends Account {
 	@Override
 	public void withdraw(double amount) {
 		isPassed = false;
-		if (amount >= balance) {
+		if (amount > balance) {
 			balance = 0;
 		} else {
 			balance -= amount;
