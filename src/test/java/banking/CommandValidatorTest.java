@@ -96,4 +96,44 @@ public class CommandValidatorTest {
 		actual = commandValidator.validate("Pass  1");
 		assertFalse(actual);
 	}
+
+	@Test
+	public void deposit_into_closed_account() {
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.setTime(1);
+
+		actual = commandValidator.validate("Deposit 99999999 500");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void withdraw_from_closed_account() {
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.setTime(1);
+
+		actual = commandValidator.validate("withdraw 99999999 500");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void transfer_to_an_closed_account() {
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_SECOND_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.depositById(ID_SECOND_ACCOUNT, DEPOSIT_AMOUNT);
+		bank.setTime(1);
+
+		actual = commandValidator.validate("transfer 12345678 99999999 500");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void transfer_from_an_closed_account() {
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_SECOND_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.depositById(ID_SECOND_ACCOUNT, DEPOSIT_AMOUNT);
+		bank.setTime(1);
+
+		actual = commandValidator.validate("transfer 99999999 12345678 500");
+		assertFalse(actual);
+	}
 }
