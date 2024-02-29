@@ -1,5 +1,6 @@
+package banking;
+
 public class CreationCommandValidator extends CommandValidator {
-	private static final String VALID_CREATE_COMMAND = "create";
 	private static final double MIN_BALANCE_CD = 1000.0;
 	private static final double MAX_BALANCE_CD = 10000.0;
 	private static final String ACCOUNT_TYPE_CD = "cd";
@@ -18,9 +19,9 @@ public class CreationCommandValidator extends CommandValidator {
 	@Override
 	public boolean validate(String input) {
 
-		input_array = inputProcess(input);
+		inputArray = inputProcess(input);
 
-		if (isExtraSpace(input_array) || !isEnoughInput(input_array)) {
+		if (!isEnoughInput(inputArray)) {
 			return false;
 		}
 
@@ -28,35 +29,35 @@ public class CreationCommandValidator extends CommandValidator {
 
 		id = setId();
 		apr = setApr();
-		if (isCdAccount() && isNumberString(input_array[4])) {
-			balance = setBalance(input_array);
+
+		if (isCdAccount() && isNumberString(inputArray[4])) {
+			balance = setBalance(inputArray);
 		}
 
-		if (isAccountExist()) {
+		if (isAccountExist(id)) {
 			return false;
 		}
 
 		boolean isAccountTypeValid = isAccountTypeValid();
 
-		boolean isCommandValid = isCommandValid(VALID_CREATE_COMMAND);
-		boolean isIdValid = idStringCheck() && !isAccountExist();
+		boolean isIdValid = idStringCheck();
 
 		boolean isAprValid = isAccountTypeValid && isAprValid();
 
-		return isCommandValid && isIdValid && isAprValid && isAccountTypeValid;
+		return isIdValid && isAprValid;
 
 	}
 
 	private String defineAccountType() {
-		return input_array[1];
+		return inputArray[1];
 	}
 
 	private String setId() {
-		return input_array[2];
+		return inputArray[2];
 	}
 
 	private double setApr() {
-		return Double.parseDouble(input_array[3]);
+		return Double.parseDouble(inputArray[3]);
 	}
 
 	private double setBalance(String[] input_array) {

@@ -1,5 +1,6 @@
+package banking;
+
 public class DepositCommandValidator extends CommandValidator {
-	public static final String VALID_DEPOSIT_COMMAND = "deposit";
 
 	public DepositCommandValidator(Bank bank) {
 		super(bank);
@@ -10,30 +11,29 @@ public class DepositCommandValidator extends CommandValidator {
 
 		double depositAmount;
 
-		input_array = inputProcess(input);
+		inputArray = inputProcess(input);
 
-		if (isExtraSpace(input_array) || !isEnoughInput(input_array) || !isNumberString(input_array[2])) {
+		if (!isEnoughInput(inputArray) || !isNumberString(inputArray[2])) {
 			return false;
 		}
 		id = setId();
 
-		if (!isAccountExist()) {
+		if (!isAccountExist(id)) {
 			return false;
 		}
 
-		depositAmount = getDepositAmount(input_array);
+		depositAmount = getDepositAmount(inputArray);
 
-		boolean isCommandValid = isCommandValid(VALID_DEPOSIT_COMMAND);
 		boolean isIdValid = idStringCheck();
 
 		boolean isBalanceValid = isValidDepositAmount(depositAmount);
 
-		return isCommandValid && isIdValid && isBalanceValid && isAccountExist();
+		return isIdValid && isBalanceValid;
 
 	}
 
 	private String setId() {
-		return input_array[1];
+		return inputArray[1];
 	}
 
 	private double getDepositAmount(String[] input_array) {
@@ -43,7 +43,7 @@ public class DepositCommandValidator extends CommandValidator {
 	private boolean isValidDepositAmount(double amount) {
 
 		Account account = bank.getAccount().get(id);
-		return account != null && account.validDepositAmount(amount);
+		return account.validDepositAmount(amount);
 	}
 
 }

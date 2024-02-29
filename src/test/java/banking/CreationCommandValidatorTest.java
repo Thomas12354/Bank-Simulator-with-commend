@@ -1,3 +1,5 @@
+package banking;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -43,8 +45,26 @@ public class CreationCommandValidatorTest {
 	}
 
 	@Test
+	public void create_an_account_with_zero_apr() {
+		actual = creationCommandValidator.validate("Create checking 12345678 0");
+		assertTrue(actual);
+	}
+
+	@Test
 	public void create_cd_account_with_valid_command() {
 		actual = creationCommandValidator.validate("Create cd 12345678 1.5 10000");
+		assertTrue(actual);
+	}
+
+	@Test
+	public void create_cd_account_with_minimum_balance() {
+		actual = creationCommandValidator.validate("Create cd 12345678 1.5 1000");
+		assertTrue(actual);
+	}
+
+	@Test
+	public void create_an_account_with_max_apr() {
+		actual = creationCommandValidator.validate("Create checking 12345678 10");
 		assertTrue(actual);
 	}
 
@@ -118,6 +138,12 @@ public class CreationCommandValidatorTest {
 	@Test
 	public void create_an_account_with_wrong_command_in_middle() {
 		actual = creationCommandValidator.validate("Create savings acd 0.6");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void create_an_account_with_insufficient_id() {
+		actual = creationCommandValidator.validate("Create savings 12345 0.6");
 		assertFalse(actual);
 	}
 

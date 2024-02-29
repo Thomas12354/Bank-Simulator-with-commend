@@ -1,3 +1,5 @@
+package banking;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -23,9 +25,9 @@ public class AccountTest {
 
 	@Test
 	void account_has_apr() {
-		assertEquals(APR, checkingAccount.getAPR());
-		assertEquals(APR, savingAccount.getAPR());
-		assertEquals(APR, cdAccount.getAPR());
+		assertEquals(APR, checkingAccount.getApr());
+		assertEquals(APR, savingAccount.getApr());
+		assertEquals(APR, cdAccount.getApr());
 	}
 
 	@Test
@@ -59,7 +61,6 @@ public class AccountTest {
 		checkingAccount.withdraw(WITHDRAW_AMOUNT);
 		savingAccount.withdraw(WITHDRAW_AMOUNT);
 		cdAccount.withdraw(1200);
-
 		assertEquals(0, checkingAccount.getBalance());
 		assertEquals(0, savingAccount.getBalance());
 		assertEquals(0, cdAccount.getBalance());
@@ -96,4 +97,13 @@ public class AccountTest {
 		assertEquals(CD_ACCOUNT_STARTING_BALANCE - WITHDRAW_AMOUNT * 2, cdAccount.getBalance());
 	}
 
+	@Test
+	void account_has_correct_balance_after_withdraw_all_balance() {
+		checkingAccount.deposit(DEPOSIT_AMOUNT);
+
+		checkingAccount.withdraw(DEPOSIT_AMOUNT * 2);
+
+		assertEquals(0, checkingAccount.getBalance());
+
+	}
 }
