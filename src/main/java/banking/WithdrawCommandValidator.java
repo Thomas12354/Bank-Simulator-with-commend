@@ -12,8 +12,7 @@ public class WithdrawCommandValidator extends CommandValidator {
 
 		inputArray = inputProcess(input);
 
-		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray)
-				|| (!isNumberString(inputArray[2]) && !isDecimalNumberString(inputArray[2]))) {
+		if (!isEnoughInput(inputArray) || (!isNumberString(inputArray[2]) && !isDecimalNumberString(inputArray[2]))) {
 			return false;
 		}
 		id = setId();

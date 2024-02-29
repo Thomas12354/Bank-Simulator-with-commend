@@ -14,10 +14,9 @@ public class PassCommandValidator extends CommandValidator {
 		int time;
 		inputArray = inputProcess(input);
 
-		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray)) {
+		if (!isEnoughInput(inputArray)) {
 			return false;
 		}
-
 		if (!isNumberString(inputArray[1])) {
 			return false;
 		}

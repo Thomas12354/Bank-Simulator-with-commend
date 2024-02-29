@@ -56,15 +56,6 @@ public class CommandValidator {
 		return idLengthCheck() && isNumberString(id);
 	}
 
-	protected boolean isExtraSpace(String[] inputArray) {
-		for (String input : inputArray) {
-			if (input.isEmpty()) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	protected boolean isEnoughInput(String[] inputArray) {
 
 		switch (command) {

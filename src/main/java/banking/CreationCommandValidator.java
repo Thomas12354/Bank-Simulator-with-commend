@@ -21,7 +21,7 @@ public class CreationCommandValidator extends CommandValidator {
 
 		inputArray = inputProcess(input);
 
-		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray)) {
+		if (!isEnoughInput(inputArray)) {
 			return false;
 		}
 
@@ -44,7 +44,7 @@ public class CreationCommandValidator extends CommandValidator {
 
 		boolean isAprValid = isAccountTypeValid && isAprValid();
 
-		return isIdValid && isAprValid && isAccountTypeValid;
+		return isIdValid && isAprValid;
 
 	}
 

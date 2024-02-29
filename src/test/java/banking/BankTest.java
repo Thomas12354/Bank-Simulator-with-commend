@@ -12,7 +12,7 @@ public class BankTest {
 	public static final double WITHDRAW_AMOUNT = 50.5;
 	public static final String ID_FIRST_ACCOUNT = "12345678";
 	public static final String ID_SECOND_ACCOUNT = "12345679";
-	public static final double CHECKING_AND_DEPOSIT_STARTING_BALANCE = 0;
+	public static final double CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE = 0;
 	public static final double CD_ACCOUNT_STARTING_BALANCE = 1000;
 
 	Bank bank;
@@ -30,27 +30,27 @@ public class BankTest {
 
 	@Test
 	void add_one_account_to_bank() {
-		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		assertEquals(1, bank.getAccount().size());
 	}
 
 	@Test
 	void add_two_account_to_bank() {
-		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
-		bank.addSavingAccount(ID_SECOND_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(ID_SECOND_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		assertEquals(2, bank.getAccount().size());
 
 	}
 
 	@Test
 	void retrieve_a_account() {
-		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		assertTrue(bank.getAccount().containsKey(ID_FIRST_ACCOUNT));
 	}
 
 	@Test
 	void deposit_money_by_id() {
-		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.getAccount().get(ID_FIRST_ACCOUNT).deposit(DEPOSIT_AMOUNT);
 		Account actual = bank.getAccount().get(ID_FIRST_ACCOUNT);
 		assertEquals(DEPOSIT_AMOUNT, actual.getBalance());
@@ -66,7 +66,7 @@ public class BankTest {
 
 	@Test
 	void deposit_money_twice() {
-		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_DEPOSIT_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.getAccount().get(ID_FIRST_ACCOUNT).deposit(DEPOSIT_AMOUNT);
 		bank.getAccount().get(ID_FIRST_ACCOUNT).deposit(DEPOSIT_AMOUNT);
 		Account actual = bank.getAccount().get(ID_FIRST_ACCOUNT);
@@ -80,6 +80,15 @@ public class BankTest {
 		bank.getAccount().get(ID_FIRST_ACCOUNT).withdraw(WITHDRAW_AMOUNT);
 		Account actual = bank.getAccount().get(ID_FIRST_ACCOUNT);
 		assertEquals(CD_ACCOUNT_STARTING_BALANCE - WITHDRAW_AMOUNT * 2, actual.getBalance());
+	}
+
+	@Test
+	public void pass_time_with_account_one_hundred() {
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.depositById(ID_FIRST_ACCOUNT, 100);
+		bank.setTime(1);
+
+		assertEquals(100.25, bank.getAccount().get(ID_FIRST_ACCOUNT).getBalance());
 	}
 
 }

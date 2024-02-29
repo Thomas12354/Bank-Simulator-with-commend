@@ -1,6 +1,5 @@
 package banking;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -62,7 +61,6 @@ public class CommandStorage {
 
 	private void getOpenAccountState() {
 		DecimalFormat decimalFormat = new DecimalFormat("0.00");
-		decimalFormat.setRoundingMode(RoundingMode.FLOOR);
 		for (String id : bank.getAccount().keySet()) {
 			idStorage.add(id);
 			accountStateStorage.add(

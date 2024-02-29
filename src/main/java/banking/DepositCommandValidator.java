@@ -13,7 +13,7 @@ public class DepositCommandValidator extends CommandValidator {
 
 		inputArray = inputProcess(input);
 
-		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray) || !isNumberString(inputArray[2])) {
+		if (!isEnoughInput(inputArray) || !isNumberString(inputArray[2])) {
 			return false;
 		}
 		id = setId();

@@ -144,7 +144,7 @@ public class WithdrawCommandValidatorTest {
 	public void withdraw_from_an_cd_account_with_not_reach_12_month() {
 		bank.setTime(5);
 
-		actual = withdrawCommandValidator.validate("Withdraw 99999999 1000");
+		actual = withdrawCommandValidator.validate("Withdraw 99999999 1051.2055032813853");
 		assertFalse(actual);
 	}
 
@@ -207,4 +207,5 @@ public class WithdrawCommandValidatorTest {
 		actual = withdrawCommandValidator.validate("Withdraw 12345679 200 foo");
 		assertFalse(actual);
 	}
+
 }

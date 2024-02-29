@@ -277,10 +277,10 @@ public class CommandProcessorTest {
 
 		bank.addCheckingAccount(CHECKING_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
-		bank.depositById(CHECKING_ACCOUNT_ID1, 500);
+		bank.depositById(CHECKING_ACCOUNT_ID1, 400);
 
 		commandProcessor.processCommand("Transfer 12345679 12345678 400");
-		assertEquals(500 - 400, bank.getAccount().get(CHECKING_ACCOUNT_ID1).getBalance());
+		assertEquals(0, bank.getAccount().get(CHECKING_ACCOUNT_ID1).getBalance());
 		assertEquals(400, bank.getAccount().get(SAVINGS_ACCOUNT_ID1).getBalance());
 	}
 
@@ -327,6 +327,15 @@ public class CommandProcessorTest {
 	}
 
 	@Test
+	public void pass_time_with_account_one_hundred() {
+		bank.addCheckingAccount(ID, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.depositById(ID, 100);
+		commandProcessor.processCommand("Pass 1");
+
+		assertEquals(100.25, bank.getAccount().get(ID).getBalance());
+	}
+
+	@Test
 	public void pass_one_month_with_correct_balance_checking_account() {
 		bank.addCheckingAccount(ID, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.depositById(ID, DEPOSIT_AMOUNT * 10);
@@ -345,11 +354,11 @@ public class CommandProcessorTest {
 	}
 
 	@Test
-	public void pass_one_month_with_correct_balance_cd_account() {
-		bank.addCDAccount(ID, 2.1, CD_ACCOUNT_STARTING_BALANCE);
-		commandProcessor.processCommand("Pass 1");
+	public void pass_twelve_month_with_correct_balance_cd_account() {
+		bank.addCDAccount(ID, APR, CD_ACCOUNT_STARTING_BALANCE);
+		commandProcessor.processCommand("Pass 12");
 
-		assertEquals(1007.0183964468789, bank.getAccount().get(ID).getBalance());
+		assertEquals(1127.3280210399332, bank.getAccount().get(ID).getBalance());
 	}
 
 }

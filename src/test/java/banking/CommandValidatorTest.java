@@ -58,6 +58,12 @@ public class CommandValidatorTest {
 	}
 
 	@Test
+	public void withdraw_from_an_checking_account_with_invalid_id() {
+		actual = commandValidator.validate("Withdraw 1234569 100");
+		assertFalse(actual);
+	}
+
+	@Test
 	public void transfer_from_an_saving_to_saving_account_with_valid_command() {
 		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
 		bank.addCheckingAccount(ID_SECOND_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
@@ -72,4 +78,22 @@ public class CommandValidatorTest {
 		assertTrue(actual);
 	}
 
+	@Test
+	public void pass_time_with_exceed_month() {
+		actual = commandValidator.validate("pass 65");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void transfer_from_an_checking_to_saving_account_with_exceed_maximum() {
+
+		actual = commandValidator.validate("Transfer 12345679 12345678 1100");
+		assertFalse(actual);
+	}
+
+	@Test
+	public void pass_time_with_extra_space() {
+		actual = commandValidator.validate("Pass  1");
+		assertFalse(actual);
+	}
 }

@@ -2,7 +2,6 @@ package banking;
 
 public class CheckingAccount extends Account {
 
-	public static final int MIN_DEPOSIT_AMOUNT = -1;
 	public static final int MAX_DEPOSIT_AMOUNT = 1000;
 
 	public static final int MIN_WITHDRAW_AMOUNT = -1;
@@ -14,7 +13,7 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public boolean validDepositAmount(double amount) {
-		return amount <= MAX_DEPOSIT_AMOUNT && amount > MIN_DEPOSIT_AMOUNT;
+		return amount <= MAX_DEPOSIT_AMOUNT;
 	}
 
 	@Override
@@ -29,7 +28,7 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public boolean validWithdrawAmount(double amount) {
-		return amount <= MAX_WITHDRAW_AMOUNT && amount > MIN_WITHDRAW_AMOUNT;
+		return amount <= MAX_WITHDRAW_AMOUNT;
 	}
 
 }

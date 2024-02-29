@@ -15,7 +15,7 @@ public class TransferCommandValidator extends CommandValidator {
 
 		inputArray = inputProcess(input);
 
-		if (isExtraSpace(inputArray) || !isEnoughInput(inputArray) || !isNumberString(inputArray[3])) {
+		if (!isEnoughInput(inputArray) || !isNumberString(inputArray[3])) {
 			return false;
 		}
 		senderId = setSenderId();
@@ -58,6 +58,6 @@ public class TransferCommandValidator extends CommandValidator {
 	}
 
 	private boolean isCd(Account senderAccount, Account receiverAccount) {
-		return senderAccount.getName().equals("cd") || receiverAccount.getName().equals("cd");
+		return senderAccount.getName().equals("Cd") || receiverAccount.getName().equals("Cd");
 	}
 }
