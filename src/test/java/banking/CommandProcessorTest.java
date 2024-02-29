@@ -109,6 +109,24 @@ public class CommandProcessorTest {
 	}
 
 	@Test
+	public void withdraw_from_saving_account_exact_balance() {
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.depositById(SAVINGS_ACCOUNT_ID1, 100);
+		bank.withdrawById(SAVINGS_ACCOUNT_ID1, 100);
+
+		assertEquals(0, bank.getAccount().get(SAVINGS_ACCOUNT_ID1).getBalance());
+	}
+
+	@Test
+	public void withdraw_from_checking_account_exact_balance() {
+		bank.addCheckingAccount(CHECKING_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.depositById(CHECKING_ACCOUNT_ID1, 100);
+		bank.withdrawById(CHECKING_ACCOUNT_ID1, 100);
+
+		assertEquals(0, bank.getAccount().get(CHECKING_ACCOUNT_ID1).getBalance());
+	}
+
+	@Test
 	public void withdraw_from_an_saving_account_with_max_amount() {
 		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 
