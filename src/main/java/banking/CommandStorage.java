@@ -8,6 +8,7 @@ public class CommandStorage {
 	private final ArrayList<String> validStorage;
 	private final ArrayList<String> idStorage;
 	private final ArrayList<String> accountStateStorage;
+	private final ArrayList<String> outputList;
 
 	Bank bank;
 
@@ -17,7 +18,7 @@ public class CommandStorage {
 		this.bank = bank;
 		idStorage = new ArrayList<>();
 		accountStateStorage = new ArrayList<>();
-
+		outputList = new ArrayList<>();
 	}
 
 	public void addValidCommand(String input) {
@@ -35,13 +36,12 @@ public class CommandStorage {
 
 	public ArrayList<String> getCommands() {
 		getOpenAccountState();
-		ArrayList<String> outputList = new ArrayList<>();
+
 		for (int i = 0; i < accountStateStorage.size(); i++) {
 			addOpenAccount(outputList, i);
 			for (String fullCommand : validStorage) {
 				String[] commandArray = inputStringConvert(fullCommand);
-				if (!outputList.contains(fullCommand)
-						&& (commandArray[0].equals("transfer") || idStorage.get(i).equals(commandArray[1]))) {
+				if (!isContains(fullCommand) && (isTransfer(commandArray) || isExist(i, commandArray))) {
 					outputList.add(fullCommand);
 				}
 			}
@@ -49,6 +49,18 @@ public class CommandStorage {
 
 		addInvalidCommandToFinalOutput(outputList);
 		return outputList;
+	}
+
+	private boolean isExist(int i, String[] commandArray) {
+		return idStorage.get(i).equals(commandArray[1]);
+	}
+
+	private boolean isTransfer(String[] commandArray) {
+		return commandArray[0].equals("transfer");
+	}
+
+	private boolean isContains(String fullCommand) {
+		return outputList.contains(fullCommand);
 	}
 
 	private void addOpenAccount(ArrayList<String> commands, int i) {

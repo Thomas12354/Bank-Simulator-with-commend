@@ -25,10 +25,7 @@ public class CreationCommandValidator extends CommandValidator {
 			return false;
 		}
 
-		accountType = defineAccountType();
-
-		id = setId();
-		apr = setApr();
+		setParameter();
 
 		if (isCdAccount() && isNumberString(inputArray[4])) {
 			balance = setBalance(inputArray);
@@ -46,6 +43,13 @@ public class CreationCommandValidator extends CommandValidator {
 
 		return isIdValid && isAprValid;
 
+	}
+
+	private void setParameter() {
+		accountType = defineAccountType();
+
+		id = setId();
+		apr = setApr();
 	}
 
 	private String defineAccountType() {

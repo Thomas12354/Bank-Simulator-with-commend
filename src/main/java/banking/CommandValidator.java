@@ -35,9 +35,9 @@ public class CommandValidator {
 			passCommandValidator = new PassCommandValidator(bank);
 			return passCommandValidator.validate(input);
 		default:
-			return false;
+			break;
 		}
-
+		return false;
 	}
 
 	protected String[] inputProcess(String input) {
