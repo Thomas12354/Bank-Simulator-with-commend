@@ -85,7 +85,6 @@ public class Bank {
 		for (String id : removeList) {
 			accounts.remove(id);
 		}
-		removeList.clear();
 	}
 
 	public void transferById(String senderId, String receiverId, double transferAmount) {

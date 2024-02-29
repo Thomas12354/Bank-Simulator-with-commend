@@ -1,7 +1,6 @@
 package banking;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -89,6 +88,25 @@ public class BankTest {
 		bank.setTime(1);
 
 		assertEquals(100.25, bank.getAccount().get(ID_FIRST_ACCOUNT).getBalance());
+	}
+
+	@Test
+	public void pass_time_with_one_account_closed() {
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+
+		bank.setTime(1);
+
+		assertFalse(bank.getAccount().containsKey(ID_FIRST_ACCOUNT));
+	}
+
+	@Test
+	public void pass_time_with_close_two_account() {
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+
+		bank.setTime(1);
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+
+		assertTrue(bank.getAccount().containsKey(ID_FIRST_ACCOUNT));
 	}
 
 }
