@@ -15,7 +15,7 @@ public class TransferCommandValidator extends CommandValidator {
 
 		inputArray = inputProcess(input);
 
-		if (!isEnoughInput(inputArray) || !isNumberString(inputArray[3])) {
+		if (!isEnoughInput(inputArray) || (!isNumberString(inputArray[3]) && !isDecimalNumberString(inputArray[3]))) {
 			return false;
 		}
 		senderId = setSenderId();

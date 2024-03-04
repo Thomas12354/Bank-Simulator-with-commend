@@ -38,8 +38,8 @@ public class Bank {
 		accounts.get(id).deposit(depositAmount);
 	}
 
-	public void withdrawById(String id, double depositAmount) {
-		accounts.get(id).withdraw(depositAmount);
+	public void withdrawById(String id, double withdrawAmount) {
+		accounts.get(id).withdraw(withdrawAmount);
 	}
 
 	public int getTime() {

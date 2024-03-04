@@ -182,8 +182,8 @@ public class CommandProcessorTest {
 
 	@Test
 	public void transfer_from_an_saving_to_saving_account_with_valid_command() {
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID2, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID2, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.depositById(SAVINGS_ACCOUNT_ID1, DEPOSIT_AMOUNT);
 
 		commandProcessor.processCommand("Transfer 12345678 12345688 100");
@@ -193,8 +193,8 @@ public class CommandProcessorTest {
 
 	@Test
 	public void transfer_from_an_saving_to_saving_account_with_exceed_balance_of_sender() {
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID2, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID2, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.depositById(SAVINGS_ACCOUNT_ID1, DEPOSIT_AMOUNT);
 
 		commandProcessor.processCommand("Transfer 12345678 12345688 300");
@@ -204,8 +204,8 @@ public class CommandProcessorTest {
 
 	@Test
 	public void transfer_from_an_saving_to_saving_account_with_zero() {
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID2, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID2, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.depositById(SAVINGS_ACCOUNT_ID1, DEPOSIT_AMOUNT);
 
 		commandProcessor.processCommand("Transfer 12345678 12345688 300");
@@ -215,8 +215,8 @@ public class CommandProcessorTest {
 
 	@Test
 	public void transfer_from_an_saving_to_saving_account_with_maximum_amount() {
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID2, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID2, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.depositById(SAVINGS_ACCOUNT_ID1, 1000);
 
 		commandProcessor.processCommand("Transfer 12345678 12345688 1000");
@@ -226,7 +226,7 @@ public class CommandProcessorTest {
 
 	@Test
 	public void transfer_from_an_saving_to_checking_account_with_valid_command() {
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.addCheckingAccount(CHECKING_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.depositById(SAVINGS_ACCOUNT_ID1, 200);
 
@@ -237,7 +237,7 @@ public class CommandProcessorTest {
 
 	@Test
 	public void transfer_from_an_saving_to_checking_account_with_zero() {
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.addCheckingAccount(CHECKING_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.depositById(SAVINGS_ACCOUNT_ID1, 200);
 
@@ -248,7 +248,7 @@ public class CommandProcessorTest {
 
 	@Test
 	public void transfer_from_an_saving_to_checking_account_with_maximum_amount() {
-		bank.addCheckingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
+		bank.addSavingAccount(SAVINGS_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.addCheckingAccount(CHECKING_ACCOUNT_ID1, APR, CHECKING_AND_SAVING_ACCOUNT_STARTING_BALANCE);
 		bank.depositById(SAVINGS_ACCOUNT_ID1, 2000);
 

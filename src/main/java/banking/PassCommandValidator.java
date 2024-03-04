@@ -27,7 +27,6 @@ public class PassCommandValidator extends CommandValidator {
 	}
 
 	private int setTime() {
-
 		return Integer.parseInt(inputArray[1]);
 	}
 }

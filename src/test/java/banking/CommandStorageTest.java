@@ -17,7 +17,7 @@ public class CommandStorageTest {
 	}
 
 	@Test
-	public void adding_a_command_into_storage() {
+	public void adding_an_invalid_command_into_storage() {
 		commandStorage.addInvalidCommand(INVALID_INPUT);
 		assertTrue(commandStorage.getInvalidCommands().contains(INVALID_INPUT));
 	}

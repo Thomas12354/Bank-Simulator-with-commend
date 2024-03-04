@@ -63,8 +63,8 @@ public class CommandStorage {
 		return outputList.contains(fullCommand);
 	}
 
-	private void addOpenAccount(ArrayList<String> commands, int i) {
-		commands.add(accountStateStorage.get(i));
+	private void addOpenAccount(ArrayList<String> outputList, int i) {
+		outputList.add(accountStateStorage.get(i));
 	}
 
 	private void addInvalidCommandToFinalOutput(ArrayList<String> commands) {

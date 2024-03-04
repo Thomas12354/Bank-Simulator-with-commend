@@ -86,8 +86,10 @@ public class CommandValidatorTest {
 
 	@Test
 	public void transfer_from_an_checking_to_saving_account_with_exceed_maximum() {
-
-		actual = commandValidator.validate("Transfer 12345679 12345678 1100");
+		bank.addCheckingAccount(ID_FIRST_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.addCheckingAccount(ID_SECOND_ACCOUNT, APR, CHECKING_AND_SAVING_STARTING_BALANCE);
+		bank.depositById(ID_FIRST_ACCOUNT, DEPOSIT_AMOUNT);
+		actual = commandValidator.validate("Transfer 99999999 12345678 1100");
 		assertFalse(actual);
 	}
 

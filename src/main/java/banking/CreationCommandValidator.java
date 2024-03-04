@@ -27,7 +27,7 @@ public class CreationCommandValidator extends CommandValidator {
 
 		setParameter();
 
-		if (isCdAccount() && isNumberString(inputArray[4])) {
+		if (isCdAccount() && (isNumberString(inputArray[4]) || isDecimalNumberString(inputArray[4]))) {
 			balance = setBalance(inputArray);
 		}
 

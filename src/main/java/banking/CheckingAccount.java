@@ -4,7 +4,6 @@ public class CheckingAccount extends Account {
 
 	public static final int MAX_DEPOSIT_AMOUNT = 1000;
 
-	public static final int MIN_WITHDRAW_AMOUNT = -1;
 	public static final int MAX_WITHDRAW_AMOUNT = 400;
 
 	public CheckingAccount(double apr, double balance) {
