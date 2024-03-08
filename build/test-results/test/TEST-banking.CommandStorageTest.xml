@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.CommandStorageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.001">
+  <properties/>
+  <testcase name="adding_an_invalid_command_into_storage()" classname="banking.CommandStorageTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

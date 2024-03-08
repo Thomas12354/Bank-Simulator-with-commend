@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.AccountTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.018">
+  <properties/>
+  <testcase name="account_has_correct_balance_after_deposit()" classname="banking.AccountTest" time="0.013"/>
+  <testcase name="account_cant_go_below_0()" classname="banking.AccountTest" time="0.001"/>
+  <testcase name="account_has_correct_balance_after_withdraw_twice()" classname="banking.AccountTest" time="0.001"/>
+  <testcase name="account_has_apr()" classname="banking.AccountTest" time="0.001"/>
+  <testcase name="account_has_correct_balance_after_withdraw()" classname="banking.AccountTest" time="0.001"/>
+  <testcase name="account_has_correct_balance_after_withdraw_all_balance()" classname="banking.AccountTest" time="0.0"/>
+  <testcase name="account_has_correct_balance_after_depositing_twice()" classname="banking.AccountTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

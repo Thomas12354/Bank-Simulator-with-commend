@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.DepositCommandValidatorTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.013">
+  <properties/>
+  <testcase name="deposit_into_a_savings_account_exceed_amount()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_an_saving_account_with_negative_value()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_zero_amount_into_a_saving_account()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_an_account_with_missing_deposit_command()" classname="banking.DepositCommandValidatorTest" time="0.0"/>
+  <testcase name="deposit_into_a_checking_account_exceed_amount()" classname="banking.DepositCommandValidatorTest" time="0.0"/>
+  <testcase name="deposit_into_an_account_with_wrong_id_command()" classname="banking.DepositCommandValidatorTest" time="0.0"/>
+  <testcase name="deposit_into_a_savings_account_within_amount()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_an_account_with_missing_amount()" classname="banking.DepositCommandValidatorTest" time="0.0"/>
+  <testcase name="deposit_into_an_account_with_valid_comment()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_an_account_with_missing_ID()" classname="banking.DepositCommandValidatorTest" time="0.0"/>
+  <testcase name="deposit_zero_amount_into_a_checking_account()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_an_account_with_wrong_deposit_value_command()" classname="banking.DepositCommandValidatorTest" time="0.0"/>
+  <testcase name="deposit_into_an_account_with_0_deposit()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_a_checking_account_within_amount()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_a_cd()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_an_account_with_a_not_existing_id()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <testcase name="deposit_into_an_checking_account_with_negative_one()" classname="banking.DepositCommandValidatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

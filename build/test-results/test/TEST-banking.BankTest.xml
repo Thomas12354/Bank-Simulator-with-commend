@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.BankTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.011">
+  <properties/>
+  <testcase name="deposit_money_by_id()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="deposit_money_twice()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="bank_has_no_account_initially()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="retrieve_a_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="pass_time_with_one_account_closed()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="withdraw_money_by_id()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="withdraw_money_twice()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="add_one_account_to_bank()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="pass_time_with_close_two_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="add_two_account_to_bank()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="pass_time_with_account_one_hundred()" classname="banking.BankTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

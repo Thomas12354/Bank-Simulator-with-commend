@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.CreationCommandValidatorTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.016">
+  <properties/>
+  <testcase name="create_an_account_with_missing_argument()" classname="banking.CreationCommandValidatorTest" time="0.001"/>
+  <testcase name="create_cd_account_with_exceed_limit()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_max_apr()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_cd_account_with_minimum_balance()" classname="banking.CreationCommandValidatorTest" time="0.001"/>
+  <testcase name="create_an_account_with_extra_space_in_middle()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_wrong_id()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_capital_words()" classname="banking.CreationCommandValidatorTest" time="0.001"/>
+  <testcase name="create_an_account_with_wrong_id_in_typing()" classname="banking.CreationCommandValidatorTest" time="0.001"/>
+  <testcase name="create_an_account_with_empty_string()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_missing_account_type()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_negative_apr()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_insufficient_id()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_wrong_command_in_middle()" classname="banking.CreationCommandValidatorTest" time="0.001"/>
+  <testcase name="create_an_account_with_duplicate_id()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_cd_account_with_missing_balance()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_cd_account_with_invalid_amount()" classname="banking.CreationCommandValidatorTest" time="0.001"/>
+  <testcase name="create_an_account_with_wrong_account_type()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_cd_account_with_valid_command()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_saving_account_with_valid_comment()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_missing_create()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_valid_comment()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_zero_apr()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_invalid_apr()" classname="banking.CreationCommandValidatorTest" time="0.001"/>
+  <testcase name="create_an_account_with_extra_space_in_end()" classname="banking.CreationCommandValidatorTest" time="0.001"/>
+  <testcase name="create_an_account_with_typo_in_create()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <testcase name="create_cd_account_with_negative_amount()" classname="banking.CreationCommandValidatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

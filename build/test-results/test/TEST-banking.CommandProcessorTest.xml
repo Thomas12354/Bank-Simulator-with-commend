@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.CommandProcessorTest" tests="37" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.037">
+  <properties/>
+  <testcase name="transfer_from_an_checking_to_checking_account_with_maximum_amount()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="withdraw_from_an_checking_account_with_zero_amount()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="transfer_from_an_checking_to_checking_account_with_zero()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="pass_time_with_account_closed()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_an_cd_account_with_exceed_balance()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_an_saving_account_with_max_amount()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="create_cd_account_with_correct_ID_and_APR_balance()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="withdraw_from_saving_account_exact_balance()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_valid_command()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_checking_account_with_valid_command()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="pass_twelve_month_with_correct_balance_cd_account()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="transfer_from_an_checking_to_saving_account_with_maximum_amount()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="withdraw_from_an_checking_account_with_max_amount()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="pass_time_with_maximum_month()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="deposit_zero_into_an_new_account()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="deposit_into_an_account_having_100_already()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_checking_account_with_maximum_amount()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="create_an_checking_account_with_capital_word()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="pass_one_month_with_correct_balance_saving_account()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_saving_account_with_valid_command()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="pass_time_with_valid_comment()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_checking_account_with_zero()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_checking_account_exact_balance()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_checking_account_with_valid_command()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="pass_one_month_with_correct_balance_checking_account()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_an_saving_account_with_valid_comment()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_an_saving_account_with_zero_amount()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="create_an_saving_account_with_correct_ID_and_APR()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="pass_time_with_account_below_one_hundred()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="create_an_account_with_extra_space_in_end()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="deposit_into_an_new_account()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_maximum_amount()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="pass_time_with_account_one_hundred()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="withdraw_from_an_cd_account_with_valid_command()" classname="banking.CommandProcessorTest" time="0.002"/>
+  <testcase name="create_an_checking_account_with_correct_ID_and_APR()" classname="banking.CommandProcessorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_zero()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_exceed_balance_of_sender()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

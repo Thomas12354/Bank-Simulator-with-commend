@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.CommandValidatorTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.029">
+  <properties/>
+  <testcase name="deposit_into_closed_account()" classname="banking.CommandValidatorTest" time="0.003"/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_valid_command()" classname="banking.CommandValidatorTest" time="0.004"/>
+  <testcase name="transfer_to_an_closed_account()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_with_exceed_month()" classname="banking.CommandValidatorTest" time="0.003"/>
+  <testcase name="withdraw_from_closed_account()" classname="banking.CommandValidatorTest" time="0.003"/>
+  <testcase name="completely_wrong_comment()" classname="banking.CommandValidatorTest" time="0.0"/>
+  <testcase name="deposit_into_an_account_with_valid_comment()" classname="banking.CommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_saving_account_with_exceed_maximum()" classname="banking.CommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_closed_account()" classname="banking.CommandValidatorTest" time="0.0"/>
+  <testcase name="deposit_into_an_account_with_invalid_comment()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_with_valid_comment()" classname="banking.CommandValidatorTest" time="0.0"/>
+  <testcase name="withdraw_from_an_checking_account_with_invalid_id()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_from_an_saving_account_with_valid_comment()" classname="banking.CommandValidatorTest" time="0.0"/>
+  <testcase name="create_an_account_with_valid_comment()" classname="banking.CommandValidatorTest" time="0.006"/>
+  <testcase name="pass_time_with_extra_space()" classname="banking.CommandValidatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

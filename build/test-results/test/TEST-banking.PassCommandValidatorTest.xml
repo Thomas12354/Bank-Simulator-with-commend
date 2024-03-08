@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.PassCommandValidatorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.009">
+  <properties/>
+  <testcase name="pass_time_with_exceed_month()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_with_maximum_month()" classname="banking.PassCommandValidatorTest" time="0.0"/>
+  <testcase name="pass_time_with_zero_month()" classname="banking.PassCommandValidatorTest" time="0.0"/>
+  <testcase name="pass_time_with_negative_month()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_with_half_month()" classname="banking.PassCommandValidatorTest" time="0.0"/>
+  <testcase name="pass_time_with_valid_comment()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_with_missing_month()" classname="banking.PassCommandValidatorTest" time="0.0"/>
+  <testcase name="pass_time_with_extra_argument()" classname="banking.PassCommandValidatorTest" time="0.0"/>
+  <testcase name="pass_time_with_missing_pass()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_with_invalid_month()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

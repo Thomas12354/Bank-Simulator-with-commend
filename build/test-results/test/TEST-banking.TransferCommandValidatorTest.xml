@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.TransferCommandValidatorTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2024-03-08T03:19:39" hostname="MSI" time="0.017">
+  <properties/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_exceed_maximum()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_checking_account_with_maximum_amount()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_with_missing_transfer()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_checking_account_with_zero()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_cd_to_saving_account_with_exceed_maximum()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_with_missing_all_id()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_with_missing_amount()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_checking_account_with_exceed_maximum()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_valid_command()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_from_an_checking_to_checking_account_with_valid_command()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_with_missing_one_id()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_with_one_typo_id()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_saving_account_with_maximum_amount()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_cd_account_with_exceed_maximum()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_saving_account_with_exceed_maximum()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_checking_account_with_maximum_amount()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_with_transfer_typo()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_saving_account_with_valid_command()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_with_amount_typo()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_with_back_id_typo()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_from_an_saving_to_checking_account_with_exceed_maximum()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_with_extra_argument()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_checking_account_with_zero()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_from_an_saving_to_checking_account_with_valid_command()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_checking_to_saving_account_with_zero()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_maximum_amount()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_with_same_id()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_from_an_saving_to_saving_account_with_zero()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
